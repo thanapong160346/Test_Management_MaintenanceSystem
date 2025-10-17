@@ -32,8 +32,21 @@
                             <td class="px-6 py-4 text-sm text-gray-800">{{ $asset->asset_price ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm text-gray-800">{{ $asset->asset_regis_at }}</td>
                             <td class="px-6 py-4 text-sm text-gray-800">
-                                <button class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</button>
-                                <button class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">Delete</button>
+                            
+                            <div class="flex flex-col md:flex-row gap-2 items-center">
+                                <!-- ปุ่ม Edit -->
+                                <button
+                                    class="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center justify-center gap-1 w-full md:w-auto">
+                                    <i data-lucide="edit" class="w-4 h-4"></i>
+                                </button>
+
+                                <!-- ปุ่ม Delete -->
+                                <button
+                                    class="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 flex items-center justify-center gap-1 w-full md:w-auto">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                                </div>
+
                             </td>
                         </tr>
                     @endforeach
@@ -67,4 +80,7 @@
             }
         });
     });
+</script>
+<script>
+  lucide.createIcons();
 </script>
