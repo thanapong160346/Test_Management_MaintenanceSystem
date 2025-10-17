@@ -1,7 +1,7 @@
 <!-- resources/views/assets/index.blade.php -->
 <x-layouts.app :title="__('Asset Management')">
     <div class="flex flex-col gap-6 rounded-xl p-6">
-        <h1 class="text-2xl font-semibold text-center text-gray-800">รายการ Asset List</h1>
+        <h1 class="text-2xl font-semibold text-center text-gray-800">รายการ Asset List นะ</h1>
 
         <!-- Search Box -->
         <div class="mb-4 flex justify-between items-center">
