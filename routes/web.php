@@ -11,11 +11,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::middleware(['auth'])->group(function () {
+    // Settings
     Route::redirect('settings', 'settings/profile');
 
     Volt::route('settings/profile', 'settings.profile')->name('profile.edit');
@@ -33,15 +33,12 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 
-         // สำหรับครุภัณฑ์
-        Route::resource('assets', AssetMainController::class);
-        Route::get('/assets', [AssetMainController::class, 'index'])->name('assets.index');
-        Route::get('/assets/data', [AssetMainController::class, 'getAssets']);  // รองรับการดึงข้อมูล
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Asset Management
+    Route::resource('assets', AssetMainController::class);
+    Route::get('/assets/data', [AssetMainController::class, 'getAssets']);
 
-
-        // สำหรับการจัดการการแจ้งซ่อม
-        Route::resource('repairs', RepairController::class);
+    // Repair Management
+    Route::resource('repairs', RepairController::class);
 });
 
 
